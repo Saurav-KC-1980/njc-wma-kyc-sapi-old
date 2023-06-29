@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="28e6b73b-29e2-4fb7-8d18-451a3bbedb3f" basePath="njc-wma-kyc-api" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="interfaceFlow" doc:id="1649596f-0c92-4a9e-8159-640e2a1a4482" >
+		<http:listener doc:name="Listener" doc:id="d28b8105-e30e-4d33-8bbd-44b867660586" config-ref="HTTP_Listener_config" path="/country/{client_id}" allowedMethods="POST"/>
+		<flow-ref doc:name="Flow Reference" doc:id="4248aec0-b654-4a19-9a85-e04f72441947" name="country-confirmation"/>
+	</flow>
+</mule>
